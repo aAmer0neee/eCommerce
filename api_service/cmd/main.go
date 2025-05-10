@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/aAmer0neee/eCommerce/api/internal/domain"
-	"github.com/aAmer0neee/eCommerce/api/internal/gateway"
+	"github.com/aAmer0neee/eCommerce/api_service/internal/domain"
+	"github.com/aAmer0neee/eCommerce/api_service/internal/gateway"
 	"github.com/aAmer0neee/eCommerce/shared/config"
 	"github.com/aAmer0neee/eCommerce/shared/logger"
 )
