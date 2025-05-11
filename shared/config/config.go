@@ -8,15 +8,17 @@ import (
 	"github.com/ilyakaznacheev/cleanenv"
 )
 
+const configFlag = "config"
+
 var (
-	configPath = flag.String("config", "", "specify path to configure file")
+	configPath = flag.String(configFlag, "", "specify path to configure file")
 )
 
 func MustLoad(cfg any) {
 	flag.Parse()
 
 	if *configPath == "" {
-		log.Fatalln("empty value of required argument: conigure path")
+		log.Fatalf("empty value of required argument: conigure path\n\t\tuse: --%s=<path/to/.yaml>",configFlag)
 	}
 
 	if _, err := os.Stat(*configPath); err == os.ErrNotExist {

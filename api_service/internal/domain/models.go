@@ -1,6 +1,6 @@
 package domain
 
-type ApiCfg struct {
+type Cfg struct {
 	Server struct {
 		Port string `yaml:"port" env:"PORT" env-default:"8080"`
 		Host string `yaml:"host" env:"HOST" env-default:"localhost"`

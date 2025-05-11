@@ -2,7 +2,7 @@ package gateway
 
 type Gateway interface {
 	Run(addr string) error
-	Shutdown() error
+	Shutdown()
 }
 
 func New() Gateway {

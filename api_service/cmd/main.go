@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	cfg := &domain.ApiCfg{}
+	cfg := &domain.Cfg{}
 	config.MustLoad(cfg)
 
 	logger.New(cfg.Logger.Level)

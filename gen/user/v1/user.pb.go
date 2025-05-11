@@ -92,8 +92,7 @@ func (x *User) GetRole() uint32 {
 type RegisterUserRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
-	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
-	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -131,13 +130,6 @@ func (*RegisterUserRequest) Descriptor() ([]byte, []int) {
 func (x *RegisterUserRequest) GetEmail() string {
 	if x != nil {
 		return x.Email
-	}
-	return ""
-}
-
-func (x *RegisterUserRequest) GetPassword() string {
-	if x != nil {
-		return x.Password
 	}
 	return ""
 }
@@ -193,6 +185,182 @@ func (x *RegisterUserResponse) GetId() string {
 	return ""
 }
 
+type UnregisterUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnregisterUserRequest) Reset() {
+	*x = UnregisterUserRequest{}
+	mi := &file_v1_user_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnregisterUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnregisterUserRequest) ProtoMessage() {}
+
+func (x *UnregisterUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_user_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnregisterUserRequest.ProtoReflect.Descriptor instead.
+func (*UnregisterUserRequest) Descriptor() ([]byte, []int) {
+	return file_v1_user_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *UnregisterUserRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type UnregisterUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UnregisterUserResponse) Reset() {
+	*x = UnregisterUserResponse{}
+	mi := &file_v1_user_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UnregisterUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnregisterUserResponse) ProtoMessage() {}
+
+func (x *UnregisterUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_user_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnregisterUserResponse.ProtoReflect.Descriptor instead.
+func (*UnregisterUserResponse) Descriptor() ([]byte, []int) {
+	return file_v1_user_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UnregisterUserResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type GetUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserRequest) Reset() {
+	*x = GetUserRequest{}
+	mi := &file_v1_user_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserRequest) ProtoMessage() {}
+
+func (x *GetUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_user_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserRequest.ProtoReflect.Descriptor instead.
+func (*GetUserRequest) Descriptor() ([]byte, []int) {
+	return file_v1_user_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *GetUserRequest) GetId() string {
+	if x != nil {
+		return x.Id
+	}
+	return ""
+}
+
+type GetUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetUserResponse) Reset() {
+	*x = GetUserResponse{}
+	mi := &file_v1_user_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetUserResponse) ProtoMessage() {}
+
+func (x *GetUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_user_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetUserResponse.ProtoReflect.Descriptor instead.
+func (*GetUserResponse) Descriptor() ([]byte, []int) {
+	return file_v1_user_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *GetUserResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 var File_v1_user_proto protoreflect.FileDescriptor
 
 const file_v1_user_proto_rawDesc = "" +
@@ -202,15 +370,24 @@ const file_v1_user_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12\x12\n" +
 	"\x04name\x18\x03 \x01(\tR\x04name\x12\x12\n" +
-	"\x04role\x18\x04 \x01(\rR\x04role\"[\n" +
+	"\x04role\x18\x04 \x01(\rR\x04role\"?\n" +
 	"\x13RegisterUserRequest\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x12\n" +
-	"\x04name\x18\x03 \x01(\tR\x04name\"&\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\"&\n" +
 	"\x14RegisterUserResponse\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\tR\x02id2f\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"'\n" +
+	"\x15UnregisterUserRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"2\n" +
+	"\x16UnregisterUserResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\" \n" +
+	"\x0eGetUserRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\":\n" +
+	"\x0fGetUserResponse\x12'\n" +
+	"\x04user\x18\x01 \x01(\v2\x13.proto.user.v1.UserR\x04user2\x8f\x02\n" +
 	"\vUserService\x12W\n" +
-	"\fRegisterUser\x12\".proto.user.v1.RegisterUserRequest\x1a#.proto.user.v1.RegisterUserResponseB4Z2github.com/aAmer0neee/eCommerce/gen/user/v1;userv1b\x06proto3"
+	"\fRegisterUser\x12\".proto.user.v1.RegisterUserRequest\x1a#.proto.user.v1.RegisterUserResponse\x12]\n" +
+	"\x0eUnregisterUser\x12$.proto.user.v1.UnregisterUserRequest\x1a%.proto.user.v1.UnregisterUserResponse\x12H\n" +
+	"\aGetUser\x12\x1d.proto.user.v1.GetUserRequest\x1a\x1e.proto.user.v1.GetUserResponseB4Z2github.com/aAmer0neee/eCommerce/gen/user/v1;userv1b\x06proto3"
 
 var (
 	file_v1_user_proto_rawDescOnce sync.Once
@@ -224,20 +401,29 @@ func file_v1_user_proto_rawDescGZIP() []byte {
 	return file_v1_user_proto_rawDescData
 }
 
-var file_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_v1_user_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
 var file_v1_user_proto_goTypes = []any{
-	(*User)(nil),                 // 0: proto.user.v1.User
-	(*RegisterUserRequest)(nil),  // 1: proto.user.v1.RegisterUserRequest
-	(*RegisterUserResponse)(nil), // 2: proto.user.v1.RegisterUserResponse
+	(*User)(nil),                   // 0: proto.user.v1.User
+	(*RegisterUserRequest)(nil),    // 1: proto.user.v1.RegisterUserRequest
+	(*RegisterUserResponse)(nil),   // 2: proto.user.v1.RegisterUserResponse
+	(*UnregisterUserRequest)(nil),  // 3: proto.user.v1.UnregisterUserRequest
+	(*UnregisterUserResponse)(nil), // 4: proto.user.v1.UnregisterUserResponse
+	(*GetUserRequest)(nil),         // 5: proto.user.v1.GetUserRequest
+	(*GetUserResponse)(nil),        // 6: proto.user.v1.GetUserResponse
 }
 var file_v1_user_proto_depIdxs = []int32{
-	1, // 0: proto.user.v1.UserService.RegisterUser:input_type -> proto.user.v1.RegisterUserRequest
-	2, // 1: proto.user.v1.UserService.RegisterUser:output_type -> proto.user.v1.RegisterUserResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: proto.user.v1.GetUserResponse.user:type_name -> proto.user.v1.User
+	1, // 1: proto.user.v1.UserService.RegisterUser:input_type -> proto.user.v1.RegisterUserRequest
+	3, // 2: proto.user.v1.UserService.UnregisterUser:input_type -> proto.user.v1.UnregisterUserRequest
+	5, // 3: proto.user.v1.UserService.GetUser:input_type -> proto.user.v1.GetUserRequest
+	2, // 4: proto.user.v1.UserService.RegisterUser:output_type -> proto.user.v1.RegisterUserResponse
+	4, // 5: proto.user.v1.UserService.UnregisterUser:output_type -> proto.user.v1.UnregisterUserResponse
+	6, // 6: proto.user.v1.UserService.GetUser:output_type -> proto.user.v1.GetUserResponse
+	4, // [4:7] is the sub-list for method output_type
+	1, // [1:4] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_v1_user_proto_init() }
@@ -251,7 +437,7 @@ func file_v1_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v1_user_proto_rawDesc), len(file_v1_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   3,
+			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
