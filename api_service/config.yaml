@@ -1,3 +1,7 @@
 server:
   host: localhost
   port: 8888
+
+services:
+  timeout: 5s
+  user: 50051

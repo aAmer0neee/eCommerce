@@ -1,4 +1,4 @@
-package config
+package config_loader
 
 import (
 	"flag"
@@ -18,7 +18,7 @@ func MustLoad(cfg any) {
 	flag.Parse()
 
 	if *configPath == "" {
-		log.Fatalf("empty value of required argument: conigure path\n\t\tuse: --%s=<path/to/.yaml>",configFlag)
+		log.Fatalf("empty value of required argument: conigure path\n\t\tuse: --%s=<path/to/.yaml>", configFlag)
 	}
 
 	if _, err := os.Stat(*configPath); err == os.ErrNotExist {

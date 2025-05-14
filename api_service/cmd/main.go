@@ -3,15 +3,24 @@ package main
 import (
 	"github.com/aAmer0neee/eCommerce/api_service/internal/domain"
 	"github.com/aAmer0neee/eCommerce/api_service/internal/gateway"
-	"github.com/aAmer0neee/eCommerce/shared/config"
+	grpc_client "github.com/aAmer0neee/eCommerce/api_service/internal/grpc_client/user"
+	service "github.com/aAmer0neee/eCommerce/api_service/internal/service/user"
+	"github.com/aAmer0neee/eCommerce/shared/config_loader"
 	"github.com/aAmer0neee/eCommerce/shared/logger"
 )
 
 func main() {
 	cfg := &domain.Cfg{}
-	config.MustLoad(cfg)
+	config_loader.MustLoad(cfg)
 
-	logger.New(cfg.Logger.Level)
+	logger := logger.New(cfg.Logger.Level)
 
-	gateway.New().Run(cfg.Server.Host + ":" + cfg.Server.Port)
+	client, err := grpc_client.NewUserClient("localhost:"+cfg.Services.User, cfg.Services.Timeout)
+
+	service := service.NewUserService(client, logger)
+	if err != nil {
+		logger.Warn("failed connect o user-service", "err", err.Error())
+	}
+
+	gateway.New(service).Run(cfg.Server.Host + ":" + cfg.Server.Port)
 }

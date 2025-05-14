@@ -2,11 +2,9 @@ package postgres
 
 import (
 	"fmt"
-
-	"github.com/aAmer0neee/eCommerce/user_service/domain"
-	"github.com/aAmer0neee/eCommerce/user_service/internal/config"
-	"github.com/google/uuid"
+	"github.com/aAmer0neee/eCommerce/auth_service/internal/config"
 	"gorm.io/driver/postgres"
+
 	"gorm.io/gorm"
 )
 
@@ -14,7 +12,7 @@ type Postgres struct {
 	DB *gorm.DB
 }
 
-func NewUserStorage(cfg *config.Cfg) (*Postgres, error) {
+func NewAuthStorage(cfg *config.Cfg) (*Postgres, error) {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s",
 		cfg.Postgres.Host,
 		cfg.Postgres.User,
@@ -30,7 +28,7 @@ func NewUserStorage(cfg *config.Cfg) (*Postgres, error) {
 
 	if cfg.Postgres.Migrate {
 
-		if err := db.AutoMigrate(&User{}); err != nil {
+		if err := db.AutoMigrate(&Users{}); err != nil {
 			return nil, err
 		}
 		fmt.Printf("[Repository][INFO] AutoMigrate")
@@ -39,7 +37,6 @@ func NewUserStorage(cfg *config.Cfg) (*Postgres, error) {
 	return &Postgres{DB: db}, nil
 }
 
-func (r *Postgres) CreateUser(user *domain.User) {}
-func (r *Postgres) GetUser(Id uuid.UUID)         {}
-func (r *Postgres) ModifyUser(user *domain.User) {}
-func (r *Postgres) RemoveUser(Id uuid.UUID)      {}
+func (r *Postgres) GetRecord()    {}
+func (r *Postgres) AddRecord()    {}
+func (r *Postgres) UpdateRecord() {}

@@ -2,7 +2,7 @@ package storage
 
 import (
 	"github.com/aAmer0neee/eCommerce/user_service/domain"
-	"github.com/aAmer0neee/eCommerce/user_service/internal/configModel"
+	"github.com/aAmer0neee/eCommerce/user_service/internal/config"
 	"github.com/aAmer0neee/eCommerce/user_service/internal/storage/postgres"
 	"github.com/google/uuid"
 )
@@ -14,7 +14,7 @@ type UserStorage interface {
 	RemoveUser(Id uuid.UUID)
 }
 
-func New(cfg *configModel.Cfg) (UserStorage, error){
-	
-	return postgres.Connect(cfg)
+func New(cfg *config.Cfg) (UserStorage, error) {
+
+	return postgres.NewUserStorage(cfg)
 }

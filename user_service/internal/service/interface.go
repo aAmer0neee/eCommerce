@@ -11,5 +11,5 @@ type Service interface {
 }
 
 func New(s storage.UserStorage, l logger.Logger) Service {
-	return newUserService(s,l)
+	return newUserService(s, l)
 }

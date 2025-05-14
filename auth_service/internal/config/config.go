@@ -1,4 +1,4 @@
-package configModel
+package config
 
 import "time"
 

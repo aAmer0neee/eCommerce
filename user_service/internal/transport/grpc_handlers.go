@@ -2,6 +2,8 @@ package transport
 
 import (
 	"context"
+	"log"
+
 	"github.com/aAmer0neee/eCommerce/gen/user/v1"
 	"github.com/aAmer0neee/eCommerce/user_service/domain"
 	"github.com/aAmer0neee/eCommerce/user_service/internal/service"
@@ -19,7 +21,8 @@ func (h *UserHandler) RegisterUser(
 	req *userv1.RegisterUserRequest,
 ) (*userv1.RegisterUserResponse, error) {
 
-	if err := validateInput(req); err != nil {
+	log.Printf("input: %s %s", req.Email, req.Name)
+	if err := validateRegisterInput(req); err != nil {
 		return nil, err
 	}
 
@@ -27,20 +30,33 @@ func (h *UserHandler) RegisterUser(
 		Email: req.Email,
 		Name:  req.Name,
 	})
+
 	return &userv1.RegisterUserResponse{Id: "pidoras"}, nil
 }
 
-func validateInput(req *userv1.RegisterUserRequest) error {
+func validateRegisterInput(req *userv1.RegisterUserRequest) error {
 	if req.Email == "" {
 		return status.Error(codes.InvalidArgument, "Missing Email")
 	}
-	if req.Password == "" {
-		return status.Error(codes.InvalidArgument, "Missing Password")
-	}
-
 	if req.Name == "" {
 		return status.Error(codes.InvalidArgument, "Missing Name")
 	}
 
 	return nil
+}
+
+func (h *UserHandler) UnregisterUser(
+	context.Context,
+	*userv1.UnregisterUserRequest,
+) (*userv1.UnregisterUserResponse, error) {
+	log.Print("unregister")
+	return nil, nil
+}
+
+func (h *UserHandler) GetUser(
+	context.Context,
+	*userv1.GetUserRequest,
+) (*userv1.GetUserResponse, error) {
+	log.Print("Get")
+	return nil, nil
 }

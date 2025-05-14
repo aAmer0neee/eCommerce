@@ -8,13 +8,13 @@ import (
 
 type UserService struct {
 	storage storage.UserStorage
-	log logger.Logger
+	log     logger.Logger
 }
 
 func newUserService(s storage.UserStorage, l logger.Logger) *UserService {
 	return &UserService{
 		storage: s,
-		log: l,
+		log:     l,
 	}
 }
 

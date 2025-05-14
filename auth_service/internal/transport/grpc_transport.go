@@ -6,9 +6,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	userv1 "github.com/aAmer0neee/eCommerce/gen/user/v1"
+	"github.com/aAmer0neee/eCommerce/auth_service/internal/service"
+	authv1 "github.com/aAmer0neee/eCommerce/gen/auth/v1"
 	"github.com/aAmer0neee/eCommerce/shared/logger"
-	"github.com/aAmer0neee/eCommerce/user_service/internal/service"
 	"google.golang.org/grpc"
 )
 
@@ -18,20 +18,19 @@ type Transport struct {
 	port       string
 }
 
-func New(log logger.Logger, port string, userService service.Service) *Transport {
+func New(log logger.Logger, port string, authService service.Service) *Transport {
 	gRPCServer := grpc.NewServer()
-	register(gRPCServer, userService)
+	register(gRPCServer, authService)
 	return &Transport{
 		gRPCServer: gRPCServer,
 		log:        log,
 		port:       port,
 	}
-
 }
 
-func register(s *grpc.Server, userService service.Service) {
-	userv1.RegisterUserServiceServer(s, &UserHandler{
-		userService: userService,
+func register(s *grpc.Server, authService service.Service) {
+	authv1.RegisterAuthServiceServer(s, &AuthHandler{
+		authService: authService,
 	})
 }
 
