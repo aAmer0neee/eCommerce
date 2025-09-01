@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package proto.user.v1;
+
+option go_package = "github.com/aAmer0neee/eCommerce/gen/user/v1;userv1";
+
+// *** MODELS
+
+message User {
+    string id = 1;
+    string email = 2;
+    string name = 3;
+    uint32 role = 4; //1 - customer; 2 - admin
+}
+
+// *** REQUESTS
+
+message RegisterUserRequest {
+    string email = 1;
+    string name = 2;
+}
+
+message RegisterUserResponse {
+    string id = 1;
+}
+
+message UnregisterUserRequest {
+    string id = 1;
+}
+
+message UnregisterUserResponse {
+    bool success = 1;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUserResponse{
+    User user = 1;
+}
+
+// *** SERVICES
+
+service UserService {
+    rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse);
+    rpc UnregisterUser(UnregisterUserRequest)returns (UnregisterUserResponse);
+    rpc GetUser(GetUserRequest)returns(GetUserResponse);
+}

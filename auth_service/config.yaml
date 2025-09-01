@@ -1,0 +1,14 @@
+grpc:
+  port: 50051
+  timeout: 5s
+logger:
+  level: info
+
+postgres:
+  user: postgres
+  password: postgres
+  name: mydb
+  port: 5432
+  host: localhost
+  migrate: true
+  sslmode: disable
